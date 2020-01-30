@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: victorya
+    environment:
+      - APPLICATION_PORT=3310
+      - DATABASE_URL=postgres://francoisblanc@host.docker.internal:5432/victorya_development
+      - DATABASE_SCHEMA=public
+      - DATABASE_SSL=false
+      - FOREST_AUTH_SECRET=c2bc779a5a4522892be6f81d490663ca73ba46d6cf365af9dd0b72bcf05e7a08b2279a8225a007346b86db86d6b4c2b2
+      - FOREST_ENV_SECRET=ae0baa123b153c9efa3f63cb42a0713188cc282d64b7fd90ec42ca67f3fe4233
+    ports:
+      - "3310:3310"
+    volumes:
+      - ./:/usr/src/app
